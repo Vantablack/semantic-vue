@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Semantic UI + Vue.js</title>
+    <!-- Semantic UI -->
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="ui container">
+        <h2 class="ui header">Semantic UI + Vue.js</h2>
+        <div class="ui segments">
+            <div class="ui segment">
+                <div class="ui header">
+                    <h4>App 1</h4>
+                </div>
+                <div id="app">
+                    <h1>{{ message }}</h1>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="ui header">
+                    <h4>App 2</h4>
+                </div>
+                <div id="app-2">
+                    <span v-bind:title="message">Hover your mouse over me for a few seconds to see my dynamically bound title!</span>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="ui header">
+                    <h4>App 3</h4>
+                </div>
+                <div id="app-3">
+                    <p v-if="seen">Now you see me</p>
+                    <button class="ui secondary button" v-on:click="toggleSeen">
+                        <i v-bind:class="{'fa fa-low-vision': seen, 'fa fa-eye': !seen}" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="ui header">
+                    <h4>App 4</h4>
+                </div>
+                <div id="app-4">
+                    <ol>
+                        <li v-for="todo in todos">
+                            {{ todo.text }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="ui header">
+                    <h4>App 5</h4>
+                </div>
+                <div id="app-5">
+                    <p>{{ message }}</p>
+                    <button class="ui animated fade secondary button" v-on:click="reverseMessage">
+                <div class="visible content">Reverse Message</div>
+                <div class="hidden content"><i class="fa fa-exchange" aria-hidden="true"></i></div>
+            </button>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="ui header">
+                    <h4>App 6</h4>
+                </div>
+                <div id="app-6">
+                    <p><code>{{ message }}</code></p>
+                    <div class="ui action input">
+                        <input v-model="message">
+                        <button class="ui secondary button" v-on:click="reverseMessage">
+                            <i class="fa fa-exchange" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="ui header">
+                    <h4>App 7</h4>
+                </div>
+                <div id="app-7">
+                    <ol>
+                        <!-- Now we provide each todo-item with the todo object    -->
+                        <!-- it's representing, so that its content can be dynamic -->
+                        <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Semantic UI -->
+    <script src="semantic/dist/semantic.min.js"></script>
+    <!-- Vue.js core -->
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <!-- HTTP Client for Vue.js -->
+    <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
