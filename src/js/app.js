@@ -1,3 +1,11 @@
+// Semantic UI Accordions
+$(document).ready(function () {
+    $('.ui.accordion').accordion({
+        exclusive: false
+    });
+});
+
+// Vue.js codes
 var app = new Vue({
     el: '#app',
     data: {

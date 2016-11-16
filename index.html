@@ -23,27 +23,25 @@
         <h1 class="ui header">Semantic UI + Vue.js</h1>
     </div>
     <div class="ui container">
-        <div class="ui segments">
-            <div class="ui segment">
-                <div class="ui header">
-                    <h4>App 1</h4>
-                </div>
+        <div class="ui styled fluid accordion">
+            <div class="title active">
+                <i class="dropdown icon"></i> App 1
+            </div>
+            <div class="content active">
                 <div id="app">
                     <h1>{{ message }}</h1>
                 </div>
             </div>
-            <div class="ui segment">
-                <div class="ui header">
-                    <h4>App 2</h4>
-                </div>
+            <div class="title">
+                <i class="dropdown icon"></i> App 2
+            </div>
+            <div class="content">
                 <div id="app-2">
                     <span v-bind:title="message">Hover your mouse over me for a few seconds to see my dynamically bound title!</span>
                 </div>
             </div>
-            <div class="ui segment">
-                <div class="ui header">
-                    <h4>App 3</h4>
-                </div>
+            <div class="title"><i class="dropdown icon"></i> App 3</div>
+            <div class="content">
                 <div id="app-3">
                     <p v-if="seen">Now you see me</p>
                     <button class="ui secondary button" v-on:click="toggleSeen">
@@ -51,10 +49,8 @@
                     </button>
                 </div>
             </div>
-            <div class="ui segment">
-                <div class="ui header">
-                    <h4>App 4</h4>
-                </div>
+            <div class="title"><i class="dropdown icon"></i> App 4</div>
+            <div class="content">
                 <div id="app-4">
                     <ol>
                         <li v-for="todo in todos">
@@ -63,10 +59,8 @@
                     </ol>
                 </div>
             </div>
-            <div class="ui segment">
-                <div class="ui header">
-                    <h4>App 5</h4>
-                </div>
+            <div class="title"><i class="dropdown icon"></i> App 5</div>
+            <div class="content">
                 <div id="app-5">
                     <p>{{ message }}</p>
                     <button class="ui animated fade secondary button" v-on:click="reverseMessage">
@@ -75,10 +69,8 @@
             </button>
                 </div>
             </div>
-            <div class="ui segment">
-                <div class="ui header">
-                    <h4>App 6</h4>
-                </div>
+            <div class="title"><i class="dropdown icon"></i> App 6</div>
+            <div class="content">
                 <div id="app-6">
                     <p><code>{{ message }}</code></p>
                     <div class="ui action input">
@@ -89,10 +81,8 @@
                     </div>
                 </div>
             </div>
-            <div class="ui segment">
-                <div class="ui header">
-                    <h4>App 7</h4>
-                </div>
+            <div class="title"><i class="dropdown icon"></i> App 7</div>
+            <div class="content">
                 <div id="app-7">
                     <ol>
                         <!-- Now we provide each todo-item with the todo object    -->
@@ -100,6 +90,15 @@
                         <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
                     </ol>
                 </div>
+            </div>
+            <div class="title">
+                <i class="dropdown icon"></i> How do you acquire a dog?
+            </div>
+            <div class="content">
+                <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+                <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess
+                    the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from
+                    a shelter, helps give a good home to a dog who may not find one so readily.</p>
             </div>
         </div>
     </div>
@@ -111,7 +110,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.6/vue.min.js"></script>
     <!-- HTTP Client for Vue.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
-    <script src="./src/js/app.js?v=1"></script>
+    <script src="./src/js/app.js?v=2"></script>
 </body>
 
 </html>
