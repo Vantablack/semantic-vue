@@ -46,3 +46,7 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+
+##### https://github.com/github/gitignore/blob/master/Sass.gitignore
+.sass-cache/
+*.css.map
