@@ -123,7 +123,7 @@
             </div>
             <div class="content">
                 <div id="argument">
-                    <p>Go To: <a v-bind:href="computedHref" target="_blank">{{ computedHref }}</a></p>
+                    <p>Go To: <a v-bind:href="computedHref">{{ computedHref }}</a></p>
                     <div class="ui fluid labeled input">
                         <select class="ui compact dropdown label" v-model.number="protocol">
                             <option value="1">https://</option>
@@ -176,7 +176,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.6/vue.min.js"></script>
     <!-- axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.min.js"></script>
-    <script src="./src/js/app.js?v=3"></script>
+    <script src="./src/js/app.js?v=4"></script>
 </body>
 
 </html>

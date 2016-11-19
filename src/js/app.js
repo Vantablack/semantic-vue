@@ -114,7 +114,7 @@ var computedApp = new Vue({
 });
 
 var argument = new Vue({
-    el: '#arguments',
+    el: '#argument',
     data: {
         href: 'yesno.wtf/',
         protocol: 1,
