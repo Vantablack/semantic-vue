@@ -1,8 +1,16 @@
-// Semantic UI Accordions
+'use strict';
+
 $(document).ready(function () {
+    // Semantic UI Accordions
     $('.ui.accordion').accordion({
         exclusive: false
     });
+
+    // Semantic UI Tabs
+    $('.menu .item').tab();
+
+    // Semantic UI Dropdowns
+    $('.ui.dropdown').dropdown();
 });
 
 // Vue.js codes
@@ -76,7 +84,7 @@ Vue.component('todo-item', {
     // This prop is called todo.
     props: ['todo'],
     template: '<li>{{ todo.text }}</li>'
-})
+});
 
 var app7 = new Vue({
     el: '#app-7',
@@ -88,5 +96,73 @@ var app7 = new Vue({
         }, {
             text: 'Whatever else humans are supposed to eat'
         }]
+    }
+});
+
+var computedApp = new Vue({
+    el: '#computedApp',
+    data: {
+        message: "Hello!"
+    },
+    computed: {
+        // a computed getter
+        reversedMessage: function () {
+            // `this` points to the vm instance
+            return this.message.split('').reverse().join('');
+        }
+    }
+});
+
+var argument = new Vue({
+    el: '#arguments',
+    data: {
+        href: 'yesno.wtf/',
+        protocol: 1,
+    },
+    computed: {
+        computedHref: function () {
+            return this.protocol === 1 ?
+                'https://' + this.href : 'http://' + this.href;
+        }
+    }
+});
+
+var classBinding = new Vue({
+    el: '#classBinding',
+    data: {
+        isRed: true
+    },
+    methods: {
+        toggleClass: function () {
+            this.isRed = !this.isRed;
+        }
+    }
+});
+
+var httpRequest = new Vue({
+    el: '#httpRequest',
+    data: {
+        content: '',
+        isLoading: false
+    },
+    methods: {
+        callApi: _.debounce(
+            function () {
+                var vm = this;
+                // Set loading state
+                this.isLoading = true;
+                axios.get('https://yesno.wtf/api')
+                    .then(function (response) {
+                        vm.isLoading = false;
+                        vm.content = response;
+                    })
+                    .catch(function (error) {
+                        console.error(error);
+                        vm.isLoading = false;
+                        vm.content = error;
+                    });
+            },
+            // Prevent spamming
+            500)
     }
 });

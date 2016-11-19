@@ -12,10 +12,10 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>Semantic UI + Vue.js</title>
     <!-- Semantic UI -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" />
     <!-- FontAwesome -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="./src/css/app.css?v=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/app.css?v=1">
 </head>
 
 <body>
@@ -24,6 +24,7 @@
     </div>
     <div class="ui container">
         <div class="ui styled fluid accordion">
+            <!-- App 1 -->
             <div class="title active">
                 <i class="dropdown icon"></i> App 1
             </div>
@@ -32,6 +33,7 @@
                     <h1>{{ message }}</h1>
                 </div>
             </div>
+            <!-- App 2 -->
             <div class="title">
                 <i class="dropdown icon"></i> App 2
             </div>
@@ -40,7 +42,10 @@
                     <span v-bind:title="message">Hover your mouse over me for a few seconds to see my dynamically bound title!</span>
                 </div>
             </div>
-            <div class="title"><i class="dropdown icon"></i> App 3</div>
+            <!-- App 3 -->
+            <div class="title">
+                <i class="dropdown icon"></i> App 3
+            </div>
             <div class="content">
                 <div id="app-3">
                     <p v-if="seen">Now you see me</p>
@@ -49,7 +54,10 @@
                     </button>
                 </div>
             </div>
-            <div class="title"><i class="dropdown icon"></i> App 4</div>
+            <!-- App 4 -->
+            <div class="title">
+                <i class="dropdown icon"></i> App 4
+            </div>
             <div class="content">
                 <div id="app-4">
                     <ol>
@@ -59,17 +67,22 @@
                     </ol>
                 </div>
             </div>
-            <div class="title"><i class="dropdown icon"></i> App 5</div>
+            <!-- App 5 -->
+            <div class="title">
+                <i class="dropdown icon"></i> App 5
+            </div>
             <div class="content">
                 <div id="app-5">
                     <p>{{ message }}</p>
-                    <button class="ui animated fade secondary button" v-on:click="reverseMessage">
-                <div class="visible content">Reverse Message</div>
-                <div class="hidden content"><i class="fa fa-exchange" aria-hidden="true"></i></div>
-            </button>
+                    <button class="ui icon button" v-on:click="reverseMessage">
+                        <i class="fa fa-exchange" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
-            <div class="title"><i class="dropdown icon"></i> App 6</div>
+            <!-- App 6 -->
+            <div class="title">
+                <i class="dropdown icon"></i> App 6
+            </div>
             <div class="content">
                 <div id="app-6">
                     <p><code>{{ message }}</code></p>
@@ -81,7 +94,10 @@
                     </div>
                 </div>
             </div>
-            <div class="title"><i class="dropdown icon"></i> App 7</div>
+            <!-- App 7 -->
+            <div class="title">
+                <i class="dropdown icon"></i> App 7
+            </div>
             <div class="content">
                 <div id="app-7">
                     <ol>
@@ -91,26 +107,76 @@
                     </ol>
                 </div>
             </div>
+            <!-- Computed Properties -->
             <div class="title">
-                <i class="dropdown icon"></i> How do you acquire a dog?
+                <i class="dropdown icon"></i> Computed Properties
             </div>
             <div class="content">
-                <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-                <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess
-                    the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from
-                    a shelter, helps give a good home to a dog who may not find one so readily.</p>
+                <div id="computedApp">
+                    <p>Original message: "{{ message }}"</p>
+                    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+                </div>
+            </div>
+            <!-- Arguments -->
+            <div class="title">
+                <i class="dropdown icon"></i> Arguments
+            </div>
+            <div class="content">
+                <div id="argument">
+                    <p>Go To: <a v-bind:href="computedHref" target="_blank">{{ computedHref }}</a></p>
+                    <div class="ui fluid labeled input">
+                        <select class="ui compact dropdown label" v-model.number="protocol">
+                            <option value="1">https://</option>
+                            <option value="0">http://</option>
+                        </select>
+                        <input v-model="href" type="text">
+                    </div>
+                </div>
+            </div>
+            <!-- Class and Style Binding -->
+            <div class="title">
+                <i class="dropdown icon"></i> Class &amp; Style Binding
+            </div>
+            <div class="content">
+                <div id="classBinding">
+                    <button class="ui button" v-bind:class="{ red: isRed }">
+                        Hello!
+                    </button>
+                    <button class="ui button" @click="toggleClass">
+                        Toggle Class
+                    </button>
+                </div>
+            </div>
+            <!-- HTTP Request -->
+            <div class="title">
+                <i class="dropdown icon"></i> HTTP Request with axios
+            </div>
+            <div class="content">
+                <div id="httpRequest">
+                    <div class="ui form" v-bind:class="{ loading:isLoading }">
+                        <div class="field">
+                            <label>Response</label>
+                            <textarea v-model="content" readonly></textarea>
+                        </div>
+                        <button class="ui button" @click="callApi">
+                            Call API
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Lodash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Semantic UI -->
-    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
     <!-- Vue.js core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.6/vue.min.js"></script>
-    <!-- HTTP Client for Vue.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
-    <script src="./src/js/app.js?v=2"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.min.js"></script>
+    <script src="./src/js/app.js?v=3"></script>
 </body>
 
 </html>
