@@ -107,4 +107,115 @@ var counterWithEvent = new Vue({
             this.totalClicks += 1;
         }
     }
+});
+
+Vue.component('simple-slot', {
+    template: `<div class="ui message">
+    <div class="header">simple-slot header</div>
+    <div><slot>This will only be displayed if there is no content to be distributed.</slot></div>
+    </div>`
+});
+
+var slots = new Vue({
+    el: '#slots'
+});
+
+Vue.component('bacon-ipsum', {
+    template: `
+    <div>
+        <p v-if="!isError">{{ bacon }}</p>
+        <div v-else>
+            <p>Failed to load bacon ipsum.</p>
+            <p>Here's why:</p>
+            <p>{{ errorMessage }}</p>
+        </div>
+    </div>`,
+    mounted: function() {
+        var vm = this;
+        axios.get('https://baconipsum.com/api/?type=meat-and-filler&paras=1')
+            .then(function(response) {
+                vm.bacon = response.data[0];
+                vm.$emit('done');
+            })
+            .catch(function(error) {
+                console.log(error);
+                vm.errorMessage = error;
+                vm.isError = true;
+                vm.$emit('done');
+            });
+    },
+    data: function() {
+        return {
+            bacon: '',
+            isError: false,
+            errorMessage: ''
+        }
+    }
 })
+
+var comp1 = {
+    template: `
+    <div class="ui message">
+        <div class="header">Component 1</div>
+        <div class="ui centered inline loader" :class="{ active: isLoading }"></div>
+        <bacon-ipsum @done="finishedLoading"></bacon-ipsum>
+    </div>`,
+    data: function() {
+        return {
+            isLoading: true
+        };
+    },
+    methods: {
+        finishedLoading: function() {
+            this.isLoading = false;
+        }
+    }
+};
+var comp2 = {
+    template: `
+    <div class="ui message">
+        <div class="header">Component 2</div>
+        <div class="ui centered inline loader" :class="{ active: isLoading }"></div>
+        <bacon-ipsum @done="finishedLoading"></bacon-ipsum>
+    </div>`,
+    data: function() {
+        return {
+            isLoading: true
+        };
+    },
+    methods: {
+        finishedLoading: function() {
+            this.isLoading = false;
+        }
+    }
+}
+var comp3 = {
+    template: `
+    <div class="ui message">
+        <div class="header">Component 3</div>
+        <div class="ui centered inline loader" :class="{ active: isLoading }"></div>
+        <bacon-ipsum @done="finishedLoading"></bacon-ipsum>
+    </div>`,
+    data: function() {
+        return {
+            isLoading: true
+        };
+    },
+    methods: {
+        finishedLoading: function() {
+            this.isLoading = false;
+        }
+    }
+}
+
+var vm = new Vue({
+    el: '#dynamicComponent',
+    data: {
+        currentView: 'comp1'
+    },
+    components: {
+        comp1: comp1,
+        comp2: comp2,
+        comp3: comp3
+    }
+});

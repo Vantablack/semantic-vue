@@ -109,7 +109,14 @@
             <div class="content">
                 <div id="counterWithEvent">
                     <div class="ui basic segment center aligned">
-                        <p>{{ totalClicks }}</p>
+                        <div class="ui statistic">
+                            <div class="value">
+                                {{ totalClicks }}
+                            </div>
+                            <div class="label">
+                                Total Clicks
+                            </div>
+                        </div>
                     </div>
                     <div class="ui grid">
                         <div class="four wide column">
@@ -127,6 +134,32 @@
                     </div>
                 </div>
             </div>
+            <!-- Slots -->
+            <div class="title">
+                <i class="dropdown icon"></i> Slots
+            </div>
+            <div class="content">
+                <div id="slots">
+                    <simple-slot>
+                        <p>Parent provided content</p>
+                    </simple-slot>
+                    <simple-slot></simple-slot>
+                </div>
+            </div>
+            <!-- Dynamic Component -->
+            <div class="title">
+                <i class="dropdown icon"></i> Dynamic Component
+            </div>
+            <div class="content">
+                <div id="dynamicComponent">
+                    <select v-model="currentView" class="ui dropdown fluid">
+                        <option value="comp1">Component 1</option>
+                        <option value="comp2">Component 2</option>
+                        <option value="comp3">Component 3</option>
+                    </select>
+                    <component v-bind:is="currentView"></component>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Outdated Browser -->
@@ -141,7 +174,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.6/vue.js"></script>
     <!-- axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.min.js"></script>
-    <script src="./src/js/component.js?v=2"></script>
+    <script src="./src/js/component.js?v=3"></script>
     <script>
         window.onload = function() {
             outdatedBrowser({
