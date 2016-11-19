@@ -11,6 +11,18 @@ $(document).ready(function() {
 
     // Semantic UI Dropdowns
     $('.ui.dropdown').dropdown();
+
+    $('#expandAll').click(function() {
+        for (var i = 0; i < $('.ui.accordion .title').length; i++) {
+            $('.ui.accordion').accordion('open', i);
+        }
+    });
+
+    $('#closeAll').click(function() {
+        for (var i = 0; i < $('.ui.accordion .title').length; i++) {
+            $('.ui.accordion').accordion('close', i);
+        }
+    });
 });
 
 // Vue.js codes
