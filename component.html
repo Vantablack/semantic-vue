@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Cache Control -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <title>Vue.js Components</title>
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/app.css?v=1">
+</head>
+
+<body>
+    <div class="ui container">
+        <h1 class="ui header">Vue.js Components</h1>
+    </div>
+    <div class="ui container">
+        <div class="ui styled fluid accordion">
+            <!-- First Component -->
+            <div class="title">
+                <i class="dropdown icon"></i> Basic Component
+            </div>
+            <div class="content">
+                <div id="basicComponent">
+                    <div class="ui basic segment center aligned">
+                        <basic-component></basic-component>
+                    </div>
+                </div>
+            </div>
+            <!-- Local Component -->
+            <div class="title">
+                <i class="dropdown icon"></i> Local Component
+            </div>
+            <div class="content">
+                <div id="localComponent">
+                    <div class="ui basic segment center aligned">
+                        <local-component></local-component>
+                    </div>
+                </div>
+            </div>
+            <!-- Counter -->
+            <div class="title">
+                <i class="dropdown icon"></i> <code>data</code> must be a function
+            </div>
+            <div class="content">
+                <div id="counter">
+                    <div class="ui grid">
+                        <div class="four wide column">
+                            <simple-counter></simple-counter>
+                        </div>
+                        <div class="four wide column">
+                            <simple-counter></simple-counter>
+                        </div>
+                        <div class="four wide column">
+                            <simple-counter></simple-counter>
+                        </div>
+                        <div class="four wide column">
+                            <simple-counter></simple-counter>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Basic Prop -->
+            <div class="title">
+                <i class="dropdown icon"></i> Basic Prop
+            </div>
+            <div class="content">
+                <div id="basicProp">
+                    <div class="ui basic segment center aligned">
+                        <basic-prop message="This is a passed in message!"></basic-prop>
+                    </div>
+                </div>
+            </div>
+            <!-- Dynamic Prop -->
+            <div class="title">
+                <i class="dropdown icon"></i> Dynamic Prop
+            </div>
+            <div class="content">
+                <div id="dynamicProp">
+                    <div class="ui input fluid">
+                        <input v-model='parentMessage' type='text'>
+                    </div>
+                    <div class="ui basic segment center aligned">
+                        <basic-prop v-bind:message='parentMessage'></basic-prop>
+                    </div>
+                </div>
+            </div>
+            <!-- Counter with Event -->
+            <div class="title">
+                <i class="dropdown icon"></i> Counter with Event
+            </div>
+            <div class="content">
+                <div id="counterWithEvent">
+                    <div class="ui basic segment center aligned">
+                        <p>{{ totalClicks }}</p>
+                    </div>
+                    <div class="ui grid">
+                        <div class="four wide column">
+                            <event-counter @increment="incrementTotal"></event-counter>
+                        </div>
+                        <div class="four wide column">
+                            <event-counter @increment="incrementTotal"></event-counter>
+                        </div>
+                        <div class="four wide column">
+                            <event-counter @increment="incrementTotal"></event-counter>
+                        </div>
+                        <div class="four wide column">
+                            <event-counter @increment="incrementTotal"></event-counter>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Lodash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Semantic UI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+    <!-- Vue.js core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.6/vue.js"></script>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.min.js"></script>
+    <script src="./src/js/component.js?v=1"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 'use strict';
 
-$(document).ready(function () {
+$(document).ready(function() {
     // Semantic UI Accordions
     $('.ui.accordion').accordion({
         exclusive: false
@@ -11,13 +11,25 @@ $(document).ready(function () {
 
     // Semantic UI Dropdowns
     $('.ui.dropdown').dropdown();
+
+    $('#expandAll').click(function() {
+        for (var i = 0; i < $('.ui.accordion .title').length; i++) {
+            $('.ui.accordion').accordion('open', i);
+        }
+    });
+
+    $('#closeAll').click(function() {
+        for (var i = 0; i < $('.ui.accordion .title').length; i++) {
+            $('.ui.accordion').accordion('close', i);
+        }
+    });
 });
 
 // Vue.js codes
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!'
+        message: 'Hello there!'
     }
 });
 
@@ -34,7 +46,7 @@ var app3 = new Vue({
         seen: true
     },
     methods: {
-        toggleSeen: function () {
+        toggleSeen: function() {
             this.seen = !this.seen;
         }
     }
@@ -59,7 +71,7 @@ var app5 = new Vue({
         message: 'Hello Vue.js!'
     },
     methods: {
-        reverseMessage: function () {
+        reverseMessage: function() {
             this.message = this.message.split('').reverse().join('')
         }
     }
@@ -71,7 +83,7 @@ var app6 = new Vue({
         message: 'Hello Vue!'
     },
     methods: {
-        reverseMessage: function () {
+        reverseMessage: function() {
             this.message = this.message.split('').reverse().join('')
         }
     }
@@ -106,7 +118,7 @@ var computedApp = new Vue({
     },
     computed: {
         // a computed getter
-        reversedMessage: function () {
+        reversedMessage: function() {
             // `this` points to the vm instance
             return this.message.split('').reverse().join('');
         }
@@ -120,7 +132,7 @@ var argument = new Vue({
         protocol: 1,
     },
     computed: {
-        computedHref: function () {
+        computedHref: function() {
             return this.protocol === 1 ?
                 'https://' + this.href : 'http://' + this.href;
         }
@@ -133,7 +145,7 @@ var classBinding = new Vue({
         isRed: true
     },
     methods: {
-        toggleClass: function () {
+        toggleClass: function() {
             this.isRed = !this.isRed;
         }
     }
@@ -147,16 +159,16 @@ var httpRequest = new Vue({
     },
     methods: {
         callApi: _.debounce(
-            function () {
+            function() {
                 var vm = this;
                 // Set loading state
                 this.isLoading = true;
                 axios.get('https://yesno.wtf/api')
-                    .then(function (response) {
+                    .then(function(response) {
                         vm.isLoading = false;
                         vm.content = response;
                     })
-                    .catch(function (error) {
+                    .catch(function(error) {
                         console.error(error);
                         vm.isLoading = false;
                         vm.content = error;

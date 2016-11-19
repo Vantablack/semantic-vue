@@ -1,9 +1,2 @@
-/* Container */
-div.ui.container:first-child {
-  padding-top: 2em;
-  padding-bottom: 2em; }
-
-div.ui.container {
-  padding-bottom: 1em; }
-
+h1.ui.header.title{margin-top:1em}div.ui.container{padding-bottom:1em}
 /*# sourceMappingURL=app.css.map */
